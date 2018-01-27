@@ -5,3 +5,4 @@
  . and 1 humidity checker that we have stuck in the flower pot on the balcony
  
  the data is sent to  https://thingspeak.com/channels/227417/
+
