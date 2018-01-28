@@ -1,0 +1,24 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="procedures_defreturn" id="TB4([a|1HEGM,sc#T#}o" x="238" y="88">
+    <mutation>
+      <arg name="gpio"></arg>
+    </mutation>
+    <field name="NAME">read_temperature</field>
+    <comment pinned="true" h="92" w="394">this function...read the temperature from inside or outside depending on the gpio value using an DHT11.</comment>
+  </block>
+  <block type="procedures_defreturn" id="5N%LEuq~2r*1BAv(lb~?" x="687" y="87">
+    <field name="NAME">read_light</field>
+    <comment pinned="true" h="97" w="339">this function...will send an output signal thought the LRD and measure the voltage with the input.</comment>
+  </block>
+  <block type="procedures_defreturn" id="]nkh9FVjOFD{lS6lS#oa" x="688" y="212">
+    <field name="NAME">read_hydrometer</field>
+    <comment pinned="true" h="108" w="320">this function...will send an output signal thought the hydrometer and measure the voltage with the input.</comment>
+  </block>
+  <block type="procedures_defreturn" id="h!0!9QT!J=y_;XxfC!C," x="238" y="312">
+    <mutation>
+      <arg name="gpio"></arg>
+    </mutation>
+    <field name="NAME">read_humidity</field>
+    <comment pinned="true" h="89" w="348">this function...read the humidity from inside or outside depending on the gpio value using a DHT11.</comment>
+  </block>
+</xml>
