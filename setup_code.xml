@@ -1,24 +1,183 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="procedures_defreturn" id="TB4([a|1HEGM,sc#T#}o" x="238" y="88">
+  <block type="procedures_defreturn" id="TB4([a|1HEGM,sc#T#}o" x="488" y="-113">
     <mutation>
       <arg name="gpio"></arg>
     </mutation>
     <field name="NAME">read_temperature</field>
-    <comment pinned="true" h="92" w="394">this function...read the temperature from inside or outside depending on the gpio value using an DHT11.</comment>
+    <comment pinned="false" h="92" w="394">this function...read the temperature from inside or outside depending on the gpio value using an DHT11.</comment>
   </block>
-  <block type="procedures_defreturn" id="5N%LEuq~2r*1BAv(lb~?" x="687" y="87">
+  <block type="variables_set" id="wzYS.0WX2H|`~J=f;}q{" x="-113" y="-12">
+    <field name="VAR">myAPI</field>
+    <comment pinned="true" h="34" w="252">Setup our API and delay</comment>
+    <value name="VALUE">
+      <block type="text" id="9q~%7z{VCNs]bW!Nkh.p">
+        <field name="TEXT">LHBVJLM9UNAH2K00</field>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="(XQi%^QGk7[.~1,ZefQ?">
+        <field name="VAR">myDelay</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="mLiX_S_auI?{xRR6kIFS">
+            <field name="OP">MULTIPLY</field>
+            <comment pinned="true" h="56" w="276">Amount of seconds between posting data.</comment>
+            <value name="A">
+              <shadow type="math_number" id="~q=lxvcPFCc,BGBGVgca">
+                <field name="NUM">15</field>
+              </shadow>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id="h=Y8m65]6a~u9X~!=w:M">
+                <field name="NUM">60</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="text_print" id="6Ed9dR^;brAU!mI9j*ML">
+            <value name="TEXT">
+              <shadow type="text" id="|b/BL^MAbOZzWa%`0OK?">
+                <field name="TEXT">starting...</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="variables_set" id="m:9nPRjx=8W=C`QM*}_X">
+                <field name="VAR">baseURL</field>
+                <value name="VALUE">
+                  <block type="text_join" id="/=vNOr,]XkmhratkV]?h">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="Pu.RXT5mzOY3SCJ?tOIK">
+                        <field name="TEXT">https://api.thingspeak.com/update?api_key=</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="hCxmmT^~g+-I!V2?visD">
+                        <field name="VAR">myAPI</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="text_print" id="]r3O(x/8t#~cwsbDWj+[">
+                    <value name="TEXT">
+                      <shadow type="text" id="%G0GLv9O,g~r5W;XMu{|">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="variables_get" id=";}qJVEwz8eM5J8~KgpWj">
+                        <field name="VAR">baseURL</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_whileUntil" id="BR6_k96*.[kQ_j}^34Wk">
+                        <field name="MODE">WHILE</field>
+                        <value name="BOOL">
+                          <block type="logic_compare" id="s1d6]|,VOZH~@ge+:QA8">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="math_number" id="P.uK4aX)G1bBka,W~}4E">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="]Km5)9nAKgnDf6fSU[rT">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="procedures_callnoreturn" id="O9f?^UV*BY{|hKGT.M:;">
+                            <mutation name="prints out the values"></mutation>
+                            <next>
+                              <block type="procedures_callnoreturn" id="7QqKTwl~/L-ChGLY0SJ=">
+                                <mutation name="send the values to thingspeak"></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="procedures_defreturn" id="5N%LEuq~2r*1BAv(lb~?" x="663" y="88">
     <field name="NAME">read_light</field>
-    <comment pinned="true" h="97" w="339">this function...will send an output signal thought the LRD and measure the voltage with the input.</comment>
+    <comment pinned="false" h="97" w="339">this function...will send an output signal thought the LRD and measure the voltage with the input.</comment>
+    <statement name="STACK">
+      <block type="variables_set" id=":B~`muM#9J7Vp=~PSv5y">
+        <field name="VAR">light</field>
+        <value name="VALUE">
+          <block type="text" id="UNUq)CnDMk@S}=E+TI/X">
+            <field name="TEXT">explorerhat.analog.one.read()</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="}GE+V`G_6`YD,b}}gd/c">
+            <field name="VAR">light</field>
+            <value name="VALUE">
+              <block type="text" id="Z@?F,cxkZV5OH~3PFYPI">
+                <field name="TEXT">explorerhat.analog.one.read()</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="Djjn}|AdTXC@OD7m=s{r">
+        <field name="VAR">light</field>
+      </block>
+    </value>
   </block>
-  <block type="procedures_defreturn" id="]nkh9FVjOFD{lS6lS#oa" x="688" y="212">
-    <field name="NAME">read_hydrometer</field>
-    <comment pinned="true" h="108" w="320">this function...will send an output signal thought the hydrometer and measure the voltage with the input.</comment>
-  </block>
-  <block type="procedures_defreturn" id="h!0!9QT!J=y_;XxfC!C," x="238" y="312">
+  <block type="procedures_defreturn" id="h!0!9QT!J=y_;XxfC!C," x="313" y="163">
     <mutation>
       <arg name="gpio"></arg>
     </mutation>
     <field name="NAME">read_humidity</field>
-    <comment pinned="true" h="89" w="348">this function...read the humidity from inside or outside depending on the gpio value using a DHT11.</comment>
+    <comment pinned="false" h="89" w="348">this function...read the humidity from inside or outside depending on the gpio value using a DHT11.</comment>
+  </block>
+  <block type="procedures_defreturn" id="]nkh9FVjOFD{lS6lS#oa" x="663" y="213">
+    <field name="NAME">read_hydrometer</field>
+    <comment pinned="false" h="108" w="320">this function...will send an output signal thought the hydrometer and measure the voltage with the input.</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="Br`zcp61__fl:(?s}LQ7">
+        <field name="VAR">moisture</field>
+        <value name="VALUE">
+          <block type="text" id="5yHA*YI2J]0F|^VDu0:t">
+            <field name="TEXT">explorerhat.analog.one.read()</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="gfODLL;9_~#88.P}N0%r">
+            <field name="VAR">moisture</field>
+            <value name="VALUE">
+              <block type="text" id="{CW20^J)r{%ZB|(Dpzrc">
+                <field name="TEXT">explorerhat.analog.one.read()</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="JFPuSzZLp3hRFi*ph(Os">
+        <field name="VAR">moisture</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defnoreturn" id="G-1b}1Y1nI3EG45CX_yK" x="313" y="312">
+    <field name="NAME">prints out the values</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+  </block>
+  <block type="procedures_defnoreturn" id="h(DE}l,j5e-SX)b~e{}Y" x="312" y="462">
+    <field name="NAME">send the values to thingspeak</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
   </block>
 </xml>
