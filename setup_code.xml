@@ -1,10 +1,25 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="procedures_defreturn" id="TB4([a|1HEGM,sc#T#}o" x="488" y="-113">
+  <block type="procedures_defreturn" id="TB4([a|1HEGM,sc#T#}o" x="663" y="-112">
     <mutation>
-      <arg name="gpio"></arg>
+      <arg name="DHTpin"></arg>
     </mutation>
     <field name="NAME">read_temperature</field>
     <comment pinned="false" h="92" w="394">this function...read the temperature from inside or outside depending on the gpio value using an DHT11.</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="!coI?V8BFypANc1Em@^m">
+        <field name="VAR">TW</field>
+        <value name="VALUE">
+          <block type="text" id="wBa|-0n.|9Kkx_L;W/2r">
+            <field name="TEXT">=Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="Uk:j*5OGA8d4_;6Ad@[.">
+        <field name="VAR">TW</field>
+      </block>
+    </value>
   </block>
   <block type="variables_set" id="wzYS.0WX2H|`~J=f;}q{" x="-113" y="-12">
     <field name="VAR">myAPI</field>
@@ -107,6 +122,28 @@
       </block>
     </next>
   </block>
+  <block type="procedures_defreturn" id="h!0!9QT!J=y_;XxfC!C," x="663" y="-12">
+    <mutation>
+      <arg name="DHTpin"></arg>
+    </mutation>
+    <field name="NAME">read_humidity</field>
+    <comment pinned="false" h="89" w="348">this function...read the humidity from inside or outside depending on the gpio value using a DHT11.</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="?emHj2i*v:F|g1~ZE*^z">
+        <field name="VAR">RHW</field>
+        <value name="VALUE">
+          <block type="text" id="N*l7a-LQQ?=PQRMJcLf`">
+            <field name="TEXT">Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="e)XtxQ?(fS9OTv|FR)jO">
+        <field name="VAR">RHW</field>
+      </block>
+    </value>
+  </block>
   <block type="procedures_defreturn" id="5N%LEuq~2r*1BAv(lb~?" x="663" y="88">
     <field name="NAME">read_light</field>
     <comment pinned="false" h="97" w="339">this function...will send an output signal thought the LRD and measure the voltage with the input.</comment>
@@ -131,17 +168,22 @@
       </block>
     </statement>
     <value name="RETURN">
-      <block type="variables_get" id="Djjn}|AdTXC@OD7m=s{r">
-        <field name="VAR">light</field>
+      <block type="math_round" id="OYu`ajSxEzTMTy3xUbj0">
+        <field name="OP">ROUND</field>
+        <value name="NUM">
+          <shadow type="math_number" id="Cm;pH`WGXl@%ZVjTz|6u">
+            <field name="NUM">3.1</field>
+          </shadow>
+          <block type="variables_get" id="Djjn}|AdTXC@OD7m=s{r">
+            <field name="VAR">light</field>
+          </block>
+        </value>
       </block>
     </value>
   </block>
-  <block type="procedures_defreturn" id="h!0!9QT!J=y_;XxfC!C," x="313" y="163">
-    <mutation>
-      <arg name="gpio"></arg>
-    </mutation>
-    <field name="NAME">read_humidity</field>
-    <comment pinned="false" h="89" w="348">this function...read the humidity from inside or outside depending on the gpio value using a DHT11.</comment>
+  <block type="procedures_defnoreturn" id="G-1b}1Y1nI3EG45CX_yK" x="288" y="213">
+    <field name="NAME">prints out the values</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
   </block>
   <block type="procedures_defreturn" id="]nkh9FVjOFD{lS6lS#oa" x="663" y="213">
     <field name="NAME">read_hydrometer</field>
@@ -167,16 +209,20 @@
       </block>
     </statement>
     <value name="RETURN">
-      <block type="variables_get" id="JFPuSzZLp3hRFi*ph(Os">
-        <field name="VAR">moisture</field>
+      <block type="math_round" id="WC1LMd)s1*NV8|YvMm6k">
+        <field name="OP">ROUND</field>
+        <value name="NUM">
+          <shadow type="math_number" id="opSPy{.BrOcYGrV(.U6+">
+            <field name="NUM">3.1</field>
+          </shadow>
+          <block type="variables_get" id="JFPuSzZLp3hRFi*ph(Os">
+            <field name="VAR">moisture</field>
+          </block>
+        </value>
       </block>
     </value>
   </block>
-  <block type="procedures_defnoreturn" id="G-1b}1Y1nI3EG45CX_yK" x="313" y="312">
-    <field name="NAME">prints out the values</field>
-    <comment pinned="false" h="80" w="160">Describe this function...</comment>
-  </block>
-  <block type="procedures_defnoreturn" id="h(DE}l,j5e-SX)b~e{}Y" x="312" y="462">
+  <block type="procedures_defnoreturn" id="h(DE}l,j5e-SX)b~e{}Y" x="287" y="288">
     <field name="NAME">send the values to thingspeak</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
   </block>
