@@ -1,18 +1,46 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="procedures_defreturn" id="TB4([a|1HEGM,sc#T#}o" x="663" y="-112">
+  <block type="procedures_defreturn" id="TB4([a|1HEGM,sc#T#}o" x="688" y="-162">
     <mutation>
       <arg name="DHTpin"></arg>
     </mutation>
     <field name="NAME">read_temperature</field>
     <comment pinned="false" h="92" w="394">this function...read the temperature from inside or outside depending on the gpio value using an DHT11.</comment>
     <statement name="STACK">
-      <block type="variables_set" id="!coI?V8BFypANc1Em@^m">
-        <field name="VAR">TW</field>
-        <value name="VALUE">
-          <block type="text" id="wBa|-0n.|9Kkx_L;W/2r">
-            <field name="TEXT">=Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)</field>
+      <block type="lights" id="Fk3nCk6.eU}nmY,KONJQ">
+        <value name="lights ">
+          <block type="colour_lights" id="~fCmX`CYJOn?)!84xHy.">
+            <field name="four_lights">0</field>
           </block>
         </value>
+        <value name="L_Output">
+          <block type="outputs" id="EHQ=4G)p~/Git_vx60%)">
+            <field name="output_L">on()</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="!coI?V8BFypANc1Em@^m">
+            <field name="VAR">TW</field>
+            <value name="VALUE">
+              <block type="text" id="wBa|-0n.|9Kkx_L;W/2r">
+                <field name="TEXT">=Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)</field>
+              </block>
+            </value>
+            <next>
+              <block type="lights" id="^LPMDQBGbUeTjjxxK:da">
+                <value name="lights ">
+                  <block type="colour_lights" id=")Nf@h6PuDybi,=4D(G;w">
+                    <field name="four_lights">0</field>
+                  </block>
+                </value>
+                <value name="L_Output">
+                  <block type="outputs" id="!-h3|MN3+}OfD}sz_+r~">
+                    <field name="output_L">off()</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
       </block>
     </statement>
     <value name="RETURN">
@@ -122,20 +150,48 @@
       </block>
     </next>
   </block>
-  <block type="procedures_defreturn" id="h!0!9QT!J=y_;XxfC!C," x="663" y="-12">
+  <block type="procedures_defreturn" id="h!0!9QT!J=y_;XxfC!C," x="1113" y="-37">
     <mutation>
       <arg name="DHTpin"></arg>
     </mutation>
     <field name="NAME">read_humidity</field>
     <comment pinned="false" h="89" w="348">this function...read the humidity from inside or outside depending on the gpio value using a DHT11.</comment>
     <statement name="STACK">
-      <block type="variables_set" id="?emHj2i*v:F|g1~ZE*^z">
-        <field name="VAR">RHW</field>
-        <value name="VALUE">
-          <block type="text" id="N*l7a-LQQ?=PQRMJcLf`">
-            <field name="TEXT">Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)</field>
+      <block type="lights" id="g)jSR{kzqHFK}E1QC4^T">
+        <value name="lights ">
+          <block type="colour_lights" id="5c+tVMZ~^d0S!~T?VNg]">
+            <field name="four_lights">0</field>
           </block>
         </value>
+        <value name="L_Output">
+          <block type="outputs" id="RO^uhSO+i(O.WW2P;]31">
+            <field name="output_L">on()</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="?emHj2i*v:F|g1~ZE*^z">
+            <field name="VAR">RHW</field>
+            <value name="VALUE">
+              <block type="text" id="N*l7a-LQQ?=PQRMJcLf`">
+                <field name="TEXT">Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)</field>
+              </block>
+            </value>
+            <next>
+              <block type="lights" id="1`T`)qi]OF7cwz}Ng7s6">
+                <value name="lights ">
+                  <block type="colour_lights" id="_-(9K;Av3V+C#y,q{)NC">
+                    <field name="four_lights">0</field>
+                  </block>
+                </value>
+                <value name="L_Output">
+                  <block type="outputs" id="s#ysXUyfR[M}agu4(Q2u">
+                    <field name="output_L">off()</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
       </block>
     </statement>
     <value name="RETURN">
@@ -144,25 +200,58 @@
       </block>
     </value>
   </block>
-  <block type="procedures_defreturn" id="5N%LEuq~2r*1BAv(lb~?" x="663" y="88">
+  <block type="procedures_defreturn" id="5N%LEuq~2r*1BAv(lb~?" x="688" y="38">
     <field name="NAME">read_light</field>
     <comment pinned="false" h="97" w="339">this function...will send an output signal thought the LRD and measure the voltage with the input.</comment>
     <statement name="STACK">
-      <block type="variables_set" id=":B~`muM#9J7Vp=~PSv5y">
-        <field name="VAR">light</field>
-        <value name="VALUE">
-          <block type="text" id="UNUq)CnDMk@S}=E+TI/X">
-            <field name="TEXT">explorerhat.analog.one.read()</field>
+      <block type="lights" id="b`4m|~]Y3Fjm8h(/QQI2">
+        <value name="lights ">
+          <block type="colour_lights" id="E{K@sK+_vEU9zc*M8|Ap">
+            <field name="four_lights">0</field>
+          </block>
+        </value>
+        <value name="L_Output">
+          <block type="outputs" id="3y)GRdGB5oCx#`te5|5F">
+            <field name="output_L">on()</field>
           </block>
         </value>
         <next>
-          <block type="variables_set" id="}GE+V`G_6`YD,b}}gd/c">
-            <field name="VAR">light</field>
-            <value name="VALUE">
-              <block type="text" id="Z@?F,cxkZV5OH~3PFYPI">
-                <field name="TEXT">explorerhat.analog.one.read()</field>
+          <block type="sleep_ms" id="uq~~5,^r`9+NkNg1oB^B">
+            <value name="SLEEP_TIME_MILI">
+              <block type="math_number" id="G-|#vjsnBxmh{4Qoh6KD">
+                <field name="NUM">1000</field>
               </block>
             </value>
+            <next>
+              <block type="variables_set" id="}GE+V`G_6`YD,b}}gd/c">
+                <field name="VAR">light</field>
+                <value name="VALUE">
+                  <block type="input_read" id="UNs@JNH0y-]fe}b.odLC">
+                    <field name="dinput">analog</field>
+                    <field name="read">read()</field>
+                    <value name="pins">
+                      <block type="ad_inputs" id="FP%)wdg1)Ubh{|[W6emH">
+                        <field name="ad_input">one</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="lights" id="izH{nZ0VKJ-)Gw/Q/h%y">
+                    <value name="lights ">
+                      <block type="colour_lights" id="Ye](Vy^5zWl;t*2U}VHH">
+                        <field name="four_lights">0</field>
+                      </block>
+                    </value>
+                    <value name="L_Output">
+                      <block type="outputs" id="?8sw/BB;)O6%zh_Ut;o%">
+                        <field name="output_L">off()</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </next>
       </block>
@@ -181,29 +270,89 @@
       </block>
     </value>
   </block>
+  <block type="input_read" id="neBKsy(m53`p./w+/*Rn" x="413" y="162">
+    <field name="dinput">input</field>
+    <field name="read">read()</field>
+    <value name="pins">
+      <block type="ad_inputs" id="*,l8(Uw,JrZ:Ooo97=bz">
+        <field name="ad_input">one</field>
+      </block>
+    </value>
+  </block>
+  <block type="input_function" id="eLE!g4Ht]x=[Qt/vrW~r" x="1112" y="163">
+    <field name="handler_function2">input_handler_function</field>
+    <value name="input_change">
+      <block type="ad_inputs_events" id="s7H`Je]h5gs;;L:i/W!B">
+        <field name="ad_inputs_event">on_changed</field>
+      </block>
+    </value>
+    <value name="input_bounce_time">
+      <block type="math_number" id="V7Y4{~0I=h#mvDsS?jb!">
+        <field name="NUM">1</field>
+      </block>
+    </value>
+  </block>
   <block type="procedures_defnoreturn" id="G-1b}1Y1nI3EG45CX_yK" x="288" y="213">
     <field name="NAME">prints out the values</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
   </block>
-  <block type="procedures_defreturn" id="]nkh9FVjOFD{lS6lS#oa" x="663" y="213">
+  <block type="variables_set" id=":B~`muM#9J7Vp=~PSv5y" x="1163" y="238">
+    <field name="VAR">light</field>
+  </block>
+  <block type="procedures_defnoreturn" id="h(DE}l,j5e-SX)b~e{}Y" x="287" y="288">
+    <field name="NAME">send the values to thingspeak</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+  </block>
+  <block type="text" id="Z@?F,cxkZV5OH~3PFYPI" x="1087" y="288">
+    <field name="TEXT">explorerhat.analog.one.read()</field>
+  </block>
+  <block type="procedures_defreturn" id="]nkh9FVjOFD{lS6lS#oa" x="688" y="338">
     <field name="NAME">read_hydrometer</field>
     <comment pinned="false" h="108" w="320">this function...will send an output signal thought the hydrometer and measure the voltage with the input.</comment>
     <statement name="STACK">
-      <block type="variables_set" id="Br`zcp61__fl:(?s}LQ7">
-        <field name="VAR">moisture</field>
-        <value name="VALUE">
-          <block type="text" id="5yHA*YI2J]0F|^VDu0:t">
-            <field name="TEXT">explorerhat.analog.one.read()</field>
+      <block type="lights" id="_u6Upn?!5Ng[cdpsQ%/E">
+        <value name="lights ">
+          <block type="colour_lights" id="T[1Ks=R{~wj8vz*{!hnf">
+            <field name="four_lights">1</field>
+          </block>
+        </value>
+        <value name="L_Output">
+          <block type="outputs" id="_tp_r{cYE23M9Si3uuG~">
+            <field name="output_L">on()</field>
           </block>
         </value>
         <next>
-          <block type="variables_set" id="gfODLL;9_~#88.P}N0%r">
+          <block type="variables_set" id="Br`zcp61__fl:(?s}LQ7">
             <field name="VAR">moisture</field>
             <value name="VALUE">
-              <block type="text" id="{CW20^J)r{%ZB|(Dpzrc">
+              <block type="text" id="5yHA*YI2J]0F|^VDu0:t">
                 <field name="TEXT">explorerhat.analog.one.read()</field>
               </block>
             </value>
+            <next>
+              <block type="variables_set" id="gfODLL;9_~#88.P}N0%r">
+                <field name="VAR">moisture</field>
+                <value name="VALUE">
+                  <block type="text" id="{CW20^J)r{%ZB|(Dpzrc">
+                    <field name="TEXT">explorerhat.analog.one.read()</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lights" id="@Nwm-g.T1pWITtq6ceok">
+                    <value name="lights ">
+                      <block type="colour_lights" id="fRmOQ3xp/az(VCBcY@5F">
+                        <field name="four_lights">1</field>
+                      </block>
+                    </value>
+                    <value name="L_Output">
+                      <block type="outputs" id="jTmiPAa~K]pF5A|~l_mi">A
+                        <field name="output_L">off()</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </next>
       </block>
@@ -222,8 +371,7 @@
       </block>
     </value>
   </block>
-  <block type="procedures_defnoreturn" id="h(DE}l,j5e-SX)b~e{}Y" x="287" y="288">
-    <field name="NAME">send the values to thingspeak</field>
-    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+  <block type="text" id="UNUq)CnDMk@S}=E+TI/X" x="1187" y="313">
+    <field name="TEXT">explorerhat.analog.one.read()</field>
   </block>
 </xml>
