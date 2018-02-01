@@ -49,96 +49,123 @@
       </block>
     </value>
   </block>
-  <block type="variables_set" id="wzYS.0WX2H|`~J=f;}q{" x="-113" y="-12">
-    <field name="VAR">myAPI</field>
-    <comment pinned="true" h="34" w="252">Setup our API and delay</comment>
-    <value name="VALUE">
-      <block type="text" id="9q~%7z{VCNs]bW!Nkh.p">
-        <field name="TEXT">LHBVJLM9UNAH2K00</field>
-      </block>
+  <block type="text_print" id="XCgYpOC}|kSilS(k~pkq" x="-112" y="-37">
+    <value name="TEXT">
+      <shadow type="text" id=":7#Kjo4,9`WLP)GufXHe">
+        <field name="TEXT">import RPi.GPIO as GPIO</field>
+      </shadow>
     </value>
     <next>
-      <block type="variables_set" id="(XQi%^QGk7[.~1,ZefQ?">
-        <field name="VAR">myDelay</field>
-        <value name="VALUE">
-          <block type="math_arithmetic" id="mLiX_S_auI?{xRR6kIFS">
-            <field name="OP">MULTIPLY</field>
-            <comment pinned="true" h="56" w="276">Amount of seconds between posting data.</comment>
-            <value name="A">
-              <shadow type="math_number" id="~q=lxvcPFCc,BGBGVgca">
-                <field name="NUM">15</field>
-              </shadow>
-            </value>
-            <value name="B">
-              <shadow type="math_number" id="h=Y8m65]6a~u9X~!=w:M">
-                <field name="NUM">60</field>
-              </shadow>
-            </value>
-          </block>
+      <block type="text_print" id="g;@hrKupN`,P.EvnCZ,V">
+        <value name="TEXT">
+          <shadow type="text" id="/f|#=o%xse*;_}eN.}^l">
+            <field name="TEXT">GPIO.setmode(GPIO.BCM)</field>
+          </shadow>
         </value>
         <next>
-          <block type="text_print" id="6Ed9dR^;brAU!mI9j*ML">
+          <block type="text_print" id="/|`v@ZzyLrN-Z@9)17:J">
             <value name="TEXT">
-              <shadow type="text" id="|b/BL^MAbOZzWa%`0OK?">
-                <field name="TEXT">starting...</field>
+              <shadow type="text" id="zzsT9x68]L@q,KKsHGc|">
+                <field name="TEXT">GPIO.setup(18, GPIO.OUT)</field>
               </shadow>
             </value>
             <next>
-              <block type="variables_set" id="m:9nPRjx=8W=C`QM*}_X">
-                <field name="VAR">baseURL</field>
+              <block type="variables_set" id="wzYS.0WX2H|`~J=f;}q{">
+                <field name="VAR">myAPI</field>
+                <comment pinned="true" h="34" w="252">Setup our API and delay</comment>
                 <value name="VALUE">
-                  <block type="text_join" id="/=vNOr,]XkmhratkV]?h">
-                    <mutation items="2"></mutation>
-                    <value name="ADD0">
-                      <block type="text" id="Pu.RXT5mzOY3SCJ?tOIK">
-                        <field name="TEXT">https://api.thingspeak.com/update?api_key=</field>
-                      </block>
-                    </value>
-                    <value name="ADD1">
-                      <block type="variables_get" id="hCxmmT^~g+-I!V2?visD">
-                        <field name="VAR">myAPI</field>
-                      </block>
-                    </value>
+                  <block type="text" id="9q~%7z{VCNs]bW!Nkh.p">
+                    <field name="TEXT">LHBVJLM9UNAH2K00</field>
                   </block>
                 </value>
                 <next>
-                  <block type="text_print" id="]r3O(x/8t#~cwsbDWj+[">
-                    <value name="TEXT">
-                      <shadow type="text" id="%G0GLv9O,g~r5W;XMu{|">
-                        <field name="TEXT">abc</field>
-                      </shadow>
-                      <block type="variables_get" id=";}qJVEwz8eM5J8~KgpWj">
-                        <field name="VAR">baseURL</field>
+                  <block type="variables_set" id="(XQi%^QGk7[.~1,ZefQ?">
+                    <field name="VAR">myDelay</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="mLiX_S_auI?{xRR6kIFS">
+                        <field name="OP">MULTIPLY</field>
+                        <comment pinned="true" h="56" w="276">Amount of seconds between posting data.</comment>
+                        <value name="A">
+                          <shadow type="math_number" id="~q=lxvcPFCc,BGBGVgca">
+                            <field name="NUM">15</field>
+                          </shadow>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="h=Y8m65]6a~u9X~!=w:M">
+                            <field name="NUM">60</field>
+                          </shadow>
+                        </value>
                       </block>
                     </value>
                     <next>
-                      <block type="controls_whileUntil" id="BR6_k96*.[kQ_j}^34Wk">
-                        <field name="MODE">WHILE</field>
-                        <value name="BOOL">
-                          <block type="logic_compare" id="s1d6]|,VOZH~@ge+:QA8">
-                            <field name="OP">EQ</field>
-                            <value name="A">
-                              <block type="math_number" id="P.uK4aX)G1bBka,W~}4E">
-                                <field name="NUM">0</field>
-                              </block>
-                            </value>
-                            <value name="B">
-                              <block type="math_number" id="]Km5)9nAKgnDf6fSU[rT">
-                                <field name="NUM">0</field>
-                              </block>
-                            </value>
-                          </block>
+                      <block type="text_print" id="6Ed9dR^;brAU!mI9j*ML">
+                        <value name="TEXT">
+                          <shadow type="text" id="|b/BL^MAbOZzWa%`0OK?">
+                            <field name="TEXT">starting...</field>
+                          </shadow>
                         </value>
-                        <statement name="DO">
-                          <block type="procedures_callnoreturn" id="O9f?^UV*BY{|hKGT.M:;">
-                            <mutation name="prints out the values"></mutation>
+                        <next>
+                          <block type="variables_set" id="m:9nPRjx=8W=C`QM*}_X">
+                            <field name="VAR">baseURL</field>
+                            <value name="VALUE">
+                              <block type="text_join" id="/=vNOr,]XkmhratkV]?h">
+                                <mutation items="2"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="Pu.RXT5mzOY3SCJ?tOIK">
+                                    <field name="TEXT">https://api.thingspeak.com/update?api_key=</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="variables_get" id="hCxmmT^~g+-I!V2?visD">
+                                    <field name="VAR">myAPI</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
                             <next>
-                              <block type="procedures_callnoreturn" id="7QqKTwl~/L-ChGLY0SJ=">
-                                <mutation name="send the values to thingspeak"></mutation>
+                              <block type="text_print" id="]r3O(x/8t#~cwsbDWj+[">
+                                <value name="TEXT">
+                                  <shadow type="text" id="%G0GLv9O,g~r5W;XMu{|">
+                                    <field name="TEXT">abc</field>
+                                  </shadow>
+                                  <block type="variables_get" id=";}qJVEwz8eM5J8~KgpWj">
+                                    <field name="VAR">baseURL</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_whileUntil" id="BR6_k96*.[kQ_j}^34Wk">
+                                    <field name="MODE">WHILE</field>
+                                    <value name="BOOL">
+                                      <block type="logic_compare" id="s1d6]|,VOZH~@ge+:QA8">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="math_number" id="P.uK4aX)G1bBka,W~}4E">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="]Km5)9nAKgnDf6fSU[rT">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO">
+                                      <block type="procedures_callnoreturn" id="O9f?^UV*BY{|hKGT.M:;">
+                                        <mutation name="prints out the values"></mutation>
+                                        <next>
+                                          <block type="procedures_callnoreturn" id="7QqKTwl~/L-ChGLY0SJ=">
+                                            <mutation name="send the values to thingspeak"></mutation>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
                               </block>
                             </next>
                           </block>
-                        </statement>
+                        </next>
                       </block>
                     </next>
                   </block>
@@ -345,7 +372,7 @@
                       </block>
                     </value>
                     <value name="L_Output">
-                      <block type="outputs" id="jTmiPAa~K]pF5A|~l_mi">A
+                      <block type="outputs" id="jTmiPAa~K]pF5A|~l_mi">
                         <field name="output_L">off()</field>
                       </block>
                     </value>
