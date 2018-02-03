@@ -56,9 +56,11 @@ def RCtime(RCpin):
     return (str(LT))
     
 def soil_moisture():
+    explorerhat.output.one.on()
+    sleep (500)
     global moisture
     moisture =  explorerhat.analog.one.read()
-    
+    explorerhat.output.one.off()
     return (str(round(moisture,1))) 
     
 # main() function
@@ -74,13 +76,13 @@ def main():
             RHW, TW, TWF = getSensorData()
             LT = RCtime(RCpin)
             TWF = (soil_moisture())
-            f = urllib2.urlopen(baseURL + 
+            #f = urllib2.urlopen(baseURL + 
                                 "&field1=%s&field2=%s&field3=%s" % (TW, TWF, RHW)+
                                 "&field4=%s" % (LT))
-            print f.read()
+            # print f.read()
             print TW + " " + TWF + " " + RHW + " " + LT
             
-            f.close()
+            #f.close()
             
 
             sleep(int(myDelay))
